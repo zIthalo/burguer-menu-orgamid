@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    background: rgba(0, 0, 0, 0.093);
+    border-radius: .3rem;
+}
+#logo{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+#header{
+    box-sizing: border-box;
+    height: 4.35rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e7e7e7;
+}
+#menu{
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+#menu a{
+    display: block;
+    padding: .5rem;
+}
+
+#btn-mobile{
+    display: none;
+}
+
+@media (max-width: 600px){
+    #menu{
+        display: block; /*Com display block cada link ocupa a sua linha, já com flex todos os itens ocupam uma só linha horizontal*/ 
+        position: absolute;
+        width: 100%;
+        top: 69px;
+        right: 0px;
+        background: #e7e7e7;
+        height: 0;
+        transition: .6s;
+        z-index: 1000;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+    #nav.active #menu{
+        visibility: visible;
+        overflow-y: auto;
+        height: calc(100vh - 70px);   
+    }
+    #menu a{
+        padding: 1rem 0;
+        margin: 0 1rem;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    }
+    #btn-mobile{
+        display: flex;
+        padding: .5rem 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+    #burguer{
+        margin-left: 5px;
+        border-top: 2px solid;
+        width: 20px;
+    }
+    #burguer::after, #burguer::before{
+        content: '';
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        transition: .3s;
+        position: relative;
+    }
+    #nav.active #burguer{
+        border-top-color: transparent;
+    }
+    #nav.active #burguer::before{
+        transform: rotate(135deg);
+    }
+    #nav.active #burguer::after{
+        transform: rotate(-135deg);
+        top: -7px;
+        
+    }
+}
