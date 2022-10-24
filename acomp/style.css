@@ -31,7 +31,7 @@ a:hover{
     background: #e7e7e7;
 }
 /*Aqui no menu eu também coloquei display flex para os itens da lista ficarem lado a lado, tirei os pontos de lista com list-style: none;, coloquei um gap que dá uma distância lateral entre os itens da lista os <li>, coloquei um text aligin*/
-ul#menu{
+#menu{
     display: flex;
     list-style: none;
     gap: 0.5rem;
