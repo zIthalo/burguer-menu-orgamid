@@ -78,36 +78,40 @@ Esta foi a última configuração para que o meu menu estivesse pronto no estilo
     }
     /*A primeira configuração feita aqui foi mostrar o botão e para isso eu tinha colocado display block aqui no mq mas depois coloquei ele como flex con figurei primeiro o botão e depois escondi o menu desk aqui no MQ. depois de ter feito essas duas configurações nestes elementos tive que dar funcionalidade ao meu botão para quando eu clicasse nele o meu menu aparecer*/
     #btn-mobile{
-        display: flex;
-        padding: .5rem 1rem;
-        border: none;
-        background: none;
-        cursor: pointer;
+        display: flex; /*Coloquei display flex aqui para quando eu colocar o ícone de hambúrguer do lado meu ícone fique realmente ao lado, se eu não fizer isso firaria abaixo*/
+        padding: .5rem 1rem; /*Este comando serve para aumentar a área de contato do meu botão*/
+        border: none; /*Meu botão por padrão é bem feinho e visualmente muito simples. Então comecei tirando a borda que ele tinha*/
+        background: none; /*Tirei também a cor de fundo do meu botão para que ficasse somente o nome "menu"*/
+        cursor: pointer; /*O cursor pointer é para quando eu passar o mouse por cima ele criar a mãozinha*/
+        gap: .5rem;
     }
     #burguer{
-        margin-left: 5px;
-        border-top: 2px solid;
+        /*Beleza, já fiz todos os comandos necessários para tirar a borda e a cor de fundo daquele botão que era feio, mas e agora para criar o hambúrguer o que eu faço?
+            Para isto eu criei uma tag span lá no meu html e coloqei o id nela de burguer observe mais de perto as configurações ↓↓ */
+        margin-left: 5px; /*para dar um afastamento do canto da tela*/
+        border-top: 2px solid; /*Este comando aqui é o primeiro tracinho do meu hamburguer os tracinhos restantes eu fiz com o id + ::before e ::after */
         width: 20px;
+        display: block;
     }
     #burguer::after, #burguer::before{
-        content: '';
+        content: ''; /*Para colocar um tracinho você pelo before e after você precisa primeiramente colocar este conteúdo vazio depois o mesmo width que você utilizou lá em cima utilize aqui depois uma altura que seja igual a altura da borda para ficar tudo de um mesmo tamanho e por fim um display block que fará o tracinho aparecer*/
         display: block;
         width: 20px;
         height: 2px;
-        background: currentColor;
-        margin-top: 5px;
-        transition: .3s;
-        position: relative;
+        background: currentColor; /*Esta current color é uma variável nativa do css que permite que o tracinho pegue a mesma cor que está no id burguer pois current color significa cor atual.*/
+        margin-top: 5px; /*Este comando é para eafastar em 5 px um tracinho do outro*/
+        transition: .3s; /*esta transição vai servir na hora de animar em X este menu hamburguer*/
+        position: relative; /*posição relativa para que me libere as configurações top right bottom ou left para fazer o a animação de X*/
     }
     #nav.active #burguer{
-        border-top-color: transparent;
+        border-top-color: transparent; /*Este comando nada mais significa que quando meu burguer menu estiver com a classe active, ou seja, quando eu tocar ou clicar sobre o botão a cor da primeira barrinha ficará transparente*/
     }
     #nav.active #burguer::before{
-        transform: rotate(135deg);
+        transform: rotate(135deg); /*E aqui eu vou fazer uma animação com transform e esta animação vai ser uma rotação em 135 graus para cima*/
     }
     #nav.active #burguer::after{
-        transform: rotate(-135deg);
-        top: -7px;
+        transform: rotate(-135deg); /*Aqui vou fazer uma rotação de 135 graus negativos para formar o x, só que meu x ficará estranho ainda quase ficando paracido com este sinal " < "*/
+        top: -7px; /*e para resolver o problema e transformar meu menu hamburguer em X eu coloquei um top de 7px negativos para que o x fosse criado*/
         
     }
 }
