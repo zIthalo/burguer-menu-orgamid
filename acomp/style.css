@@ -1,20 +1,26 @@
+@charset "UTF-8";
+/*A primeira coisa que eu fiz foi tirar todos os margins e paddings de tudo nas configurações globais*/
 *{
     margin: 0;
     padding: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+/*Depois eu vim aqui e coloquei a cor dos meus links de preto e tirei o underline dos links com text-decoration:none;*/
 a{
     color: black;
     text-decoration: none;
 }
+/*Depois coloquei uma animação hover*/
 a:hover{
     background: rgba(0, 0, 0, 0.093);
     border-radius: .3rem;
 }
+/*Estilizei o meu logo assim*/
 #logo{
     font-size: 1.5rem;
     font-weight: bold;
 }
+/*Coloquei aqui no meu header display flex para posicionar os itens um ao lado do outro, coloquei uma altura para ficar com uma aparência larguinha, coloquei um align-items: center; para centralizálos na mesma linha u um justify-content: space-between; para alinhar menu na direita e logo na esquerda e fazer um espaço ao centro, por fim coloquei um padding de 1rem para não deixar grudado nem meu logo nem meu manu em cima da tela e nem nas laterais e o meu border box foi colocado para que não fosse somado o valor do meu height com o valor do padding, também para que o header não tivesse mais que 70px */
 #header{
     box-sizing: border-box;
     height: 4.35rem;
@@ -24,46 +30,53 @@ a:hover{
     justify-content: space-between;
     background: #e7e7e7;
 }
-#menu{
+/*Aqui no menu eu também coloquei display flex para os itens da lista ficarem lado a lado, tirei os pontos de lista com list-style: none;, coloquei um gap que dá uma distância lateral entre os itens da lista os <li>, coloquei um text aligin*/
+ul#menu{
     display: flex;
     list-style: none;
     gap: 0.5rem;
     text-align: center;
 }
-
+/*Essa configuração #menu a foi feita para poder colocar um padding no meus links do menu. mas para que o padding funcione eu coloquei display block em cada a pois todos os a têm display inline e eles não pegam padding sem serem display block.
+ 
+Esta foi a última configuração para que o meu menu estivesse pronto no estilo desktop, que não é responsivo para celulares por exemplo. Então para resolver isso fiz as configurações abaixo desta que foram, criar um botão em html com <button> e configurá-lo aqui no css com o id btn-mobile. E também um media query para configurar o menu quando meu menu chegasse a determinado tamanho.
+ 
+  Depois de ter feito isso eu vi que é mais difícil configurar um menu para celular do que para pc por ex, e percebi que o conceito mobile first é essencial, quem dominar o mobile first primeiro para fazer configuração de menu desktop é muito mais simples*/
 #menu a{
     display: block;
     padding: .5rem;
 }
-
+/*Coloquei este botão mobile para não aparecer porque*/
 #btn-mobile{
     display: none;
 }
-
+/*Traduzindo a declaração media: quando a largura da tela tiver o tamanho igual ou menor que 600px faça esses estilos*/
 @media (max-width: 600px){
     #menu{
-        display: block; /*Com display block cada link ocupa a sua linha, já com flex todos os itens ocupam uma só linha horizontal*/ 
-        position: absolute;
-        width: 100%;
-        top: 69px;
-        right: 0px;
-        background: #e7e7e7;
-        height: 0;
-        transition: .6s;
-        z-index: 1000;
-        visibility: hidden;
-        overflow-y: hidden;
+        display: block; /*8º Fiz este comando pois com display block cada link ocupa a sua linha, ficando um abaixo do outro já com flex todos os itens ocupam uma só linha na horizontal*/ 
+        position: absolute; /*3º Tirei o display none que tinha aqui e cliquei no botão menu para deixá-lo ativado, depois coloquei position absolute, que para quando meu menu aparecesse ele passasse por cima de qualquer elemento desta tela*/
+        width: 100%; /* 4º Depois de configurar uma position como absolute meu menu ficou bugado e só ficou aparecendo a primeira palavra na tela que era o sobre. nisso eu coloquei uma largura de 100% da tela para que ele ficasse totalmente visível. Só que isto não é o suficiente para ele aparecer então ↓↓*/
+        top: 69px; /*5º coloquei este top de 69px para ele ficar exatamente abaixo da minha header*/
+        right: 0px;/*6º Coloquei este right para o meu menu sair da parte da direita e ir para o lado esquerdo, aí finalmente meu menu apareceu na tela novamente, só que ainda em linha horizontal */
+        background: #e7e7e7; /*7º coloquei esta cor cinza claro para ele ficar com uma corzinha também e foi aqui que percebi que 69px ficara perfeito abaixo do meu header, coladinho*/
+        height: 0;/*14º coloquei este height de 0 para meu menu começar em 0 de altura até a altura que estava aqui antes e foi para o meu id nav.active abaixo, esta: height: calc(100vh - 70px);*/
+        transition: .6s; /*15º Coloquei esta transição para animar de height 0 para height: calc(100vh - 70px);*/
+        z-index: 1000; /*9º Este comando é dado para garantir que meu menu fique realmente porcima de qualquer tag ou conteúdo do meu html*/
+        visibility: hidden; /*16º Como aqui tinha um display none e na área #nav.active #menu tinha um display block a minha animação não conseguia ocorrer, pois não dá para animar algo que não existe (display none) para algo que passará a existir (display block) então eu escondi a visibilidade simulando um display none, só que desta vez o menu realmente existia pois não tinha display none e sim uma visibilidade escondida (visibility hidden) e quando minha nav tivesse a classe active a visibilidade fosse visível */
+        overflow-y: hidden; /*18º Aqui foi preciso colocar o overflow para que quando meu menu fosse ativo a animação fosse se escondendo e aparecendo de acordo com a animação. Sem ele primeiro aparecia o menu e depois a cor de fundo. overflow y significa transbordar no eixo y, ou seja, o eixo de altura. (se fosse x era largura)*/
     }
+    /*2º E assim foi a lógica aqui: quando o meu id nav estiver com a classe active, quero que meu menu apareça ocupando a tela da barra de navegação abaixo cobrindo toda a tela, inicialmente eu coloque o nav active com display flex para ir configurando depois disso eu configurei este menu lá em cima no id menu dentro do mq ↑↑↑*/
     #nav.active #menu{
-        visibility: visible;
-        overflow-y: auto;
+        visibility: visible;/*17º como já havia explicado foi o que eu fiz no item 16º. Ao invés de lá ter um display none e aqui ter um display block eu coloquei lá com invisibilidade (visibility hidden) e aqui com visibilidade (visibility visible). A animação já melhorou 70% mas para ficar 100% precisei usar os comandos overflow-y */
+        overflow-y: auto; /*19º aqui coloquei este comando pois sem ele se meu menu tivesse muitos links e várias oopções não iria ter uma barra de rolagem para eu ver as outras opçoes se não fosse o overflo y auto*/
         height: calc(100vh - 70px);   
     }
     #menu a{
-        padding: 1rem 0;
-        margin: 0 1rem;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem 0;/*10ºEste comando foi dado para engordar um pouco os links em 16px para cima e para baixo e 0 para um lado e para outro*/
+        margin: 0 1rem; /*11º já aqui eu afastei um do outro 0 para cima e baixo 16px = 1rem para um lado e para o outro*/
+        border-bottom: 2px solid rgba(0, 0, 0, 0.05); /*12º bordinha embaixo, clarinha simulando uma linha*/
     }
+    /*A primeira configuração feita aqui foi mostrar o botão e para isso eu tinha colocado display block aqui no mq mas depois coloquei ele como flex con figurei primeiro o botão e depois escondi o menu desk aqui no MQ. depois de ter feito essas duas configurações nestes elementos tive que dar funcionalidade ao meu botão para quando eu clicasse nele o meu menu aparecer*/
     #btn-mobile{
         display: flex;
         padding: .5rem 1rem;
