@@ -31,7 +31,7 @@ a:hover{
     background: #e7e7e7;
 }
 /*Aqui no menu eu também coloquei display flex para os itens da lista ficarem lado a lado, tirei os pontos de lista com list-style: none;, coloquei um gap que dá uma distância lateral entre os itens da lista os <li>, coloquei um text aligin*/
-#menu{
+#menu{ /*Eu estava com meu menu na horizontal mesmo quando estava no modo burguer porque eu tinha declarado assim ul#menu deu um bug lá em baixo, fica a dica*/
     display: flex;
     list-style: none;
     gap: 0.5rem;
@@ -106,12 +106,13 @@ Esta foi a última configuração para que o meu menu estivesse pronto no estilo
     #nav.active #burguer{
         border-top-color: transparent; /*Este comando nada mais significa que quando meu burguer menu estiver com a classe active, ou seja, quando eu tocar ou clicar sobre o botão a cor da primeira barrinha ficará transparente*/
     }
+    /*Como se lê? Assim. Quando o id da tag nav estiver com a classe .active faça esta animação no tracinho before↓↓*/
     #nav.active #burguer::before{
         transform: rotate(135deg); /*E aqui eu vou fazer uma animação com transform e esta animação vai ser uma rotação em 135 graus para cima*/
     }
     #nav.active #burguer::after{
         transform: rotate(-135deg); /*Aqui vou fazer uma rotação de 135 graus negativos para formar o x, só que meu x ficará estranho ainda quase ficando paracido com este sinal " < "*/
-        top: -7px; /*e para resolver o problema e transformar meu menu hamburguer em X eu coloquei um top de 7px negativos para que o x fosse criado*/
+        top: -7px; /*e para resolver o problema e transformar meu menu hamburguer em X eu coloquei um top de 7px negativos para que o x fosse criado. Lembrando que eu só posso colocar isso se meu hambúrguer tiveruma posição relativa ou absoluta neste caso coloquei relativa*/
         
     }
 }

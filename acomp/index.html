@@ -12,10 +12,15 @@
     <header id="header">
         <a href="#" id="logo">zIthalo</a>
         <nav id="nav">
-            <button id="btn-mobile" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">Menu
+            <button id="btn-mobile" aria-label="Abrir Menu" aria-haspopup="true" aria-controls="menu" aria-expanded="false">Menu <!--O primeiro item do aria foi o expanded coloquei o valor para false para indicar o valor padrão. quando false significa menu não expandido quando true menu expandido, mas quem irá mudar isso será o JS-->
+
+                <!--Aria haspopup serve para indicar que ali tem um popup-->
+                <!--Aria label serve para dizer que quando eu clicar ele diga abrir menu para mudar para fechar menu somente no JS foi isso que fiz no JS. E com isso terminamos a nossa acessibilidade para o menu-->
                 <span id="burguer"></span>
             </button>
-            <ul id="menu" role="menu">
+            <ul id="menu" role="menu"> <!--Para melhorar a acessibilidade coloque que o papel (role) desta tag é ser um menu-->
+
+                <!--Site que simula um vscode com navegador ao lado https://www.code.origamid.dev/-->
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Contato</a></li>
