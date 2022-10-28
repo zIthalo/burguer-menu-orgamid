@@ -1,4 +1,4 @@
-@charset "UTF-8";
+    @charset "UTF-8";
 /*A primeira coisa que eu fiz foi tirar todos os margins e paddings de tudo nas configurações globais*/
 *{
     margin: 0;
@@ -31,22 +31,22 @@ a:hover{
     background: #e7e7e7;
 }
 /*Aqui no menu eu também coloquei display flex para os itens da lista ficarem lado a lado, tirei os pontos de lista com list-style: none;, coloquei um gap que dá uma distância lateral entre os itens da lista os <li>, coloquei um text aligin*/
-#menu{ /*Eu estava com meu menu na horizontal mesmo quando estava no modo burguer porque eu tinha declarado assim ul#menu deu um bug lá em baixo, fica a dica*/
+#menu{ /*Eu estava com meu menu na horizontal mesmo quando estava no modo burguer porque eu tinha declarado assim ul#menu deu um bug lá em baixo, *fica a dica*/
     display: flex;
     list-style: none;
     gap: 0.5rem;
     text-align: center;
 }
-/*Essa configuração #menu a foi feita para poder colocar um padding no meus links do menu. mas para que o padding funcione eu coloquei display block em cada a pois todos os a têm display inline e eles não pegam padding sem serem display block.
+/*Essa configuração #menu a foi feita para poder colocar um padding no meus links do menu. mas para que o padding funcione eu coloquei display block em cada a pois todos os <a> têm display inline e eles não pegam padding sem serem display block.
  
-Esta foi a última configuração para que o meu menu estivesse pronto no estilo desktop, que não é responsivo para celulares por exemplo. Então para resolver isso fiz as configurações abaixo desta que foram, criar um botão em html com <button> e configurá-lo aqui no css com o id btn-mobile. E também um media query para configurar o menu quando meu menu chegasse a determinado tamanho.
+Esta foi a última configuração para que o meu menu estivesse pronto no estilo desktop, que não é responsivo para celulares, por exemplo. Então para resolver isso fiz as configurações abaixo desta que foram, criar um botão em html com <button> e configurá-lo aqui no css com o id btn-mobile. E também um media query para configurar o menu quando meu menu chegasse a determinado tamanho.
  
   Depois de ter feito isso eu vi que é mais difícil configurar um menu para celular do que para pc por ex, e percebi que o conceito mobile first é essencial, quem dominar o mobile first primeiro para fazer configuração de menu desktop é muito mais simples*/
 #menu a{
     display: block;
     padding: .5rem;
 }
-/*Coloquei este botão mobile para não aparecer porque*/
+/*Coloquei este botão mobile para não aparecer*/
 #btn-mobile{
     display: none;
 }
@@ -99,7 +99,7 @@ Esta foi a última configuração para que o meu menu estivesse pronto no estilo
         width: 20px;
         height: 2px;
         background: currentColor; /*Esta current color é uma variável nativa do css que permite que o tracinho pegue a mesma cor que está no id burguer pois current color significa cor atual.*/
-        margin-top: 5px; /*Este comando é para eafastar em 5 px um tracinho do outro*/
+        margin-top: 5px; /*Este comando é para afastar em 5 px um tracinho do outro*/
         transition: .3s; /*esta transição vai servir na hora de animar em X este menu hamburguer*/
         position: relative; /*posição relativa para que me libere as configurações top right bottom ou left para fazer o a animação de X*/
     }
